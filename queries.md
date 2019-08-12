@@ -10,33 +10,29 @@
 
 ## List first 10 orders ever places, descending by the order date
 
-    - SELECT * from orders
-order by orderdate desc limit 10
+        - SELECT * from orders
+        order by orderdate desc limit 10
 
 ## Find all customers that live in London, Madrid, or Brazil
 
--   SELECT * from Customers where City = "London" or City = "Madrid" or Country = "Brazil"
-
-
-
+        - SELECT * from Customers where City = "London" or City = "Madrid" or Country = "Brazil"
 
 ## Add a customer record for "The Shire", the contact name is "Bilbo Baggins" the address is -"1 Hobbit-Hole" in "Bag End", postal code "111" and the country is "Middle Earth"
 
-    - insert into Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
-    values ("The Shire", "Bilbo Baggins", "1 Hobbit-Hole", "Bag End", "111","Middle Earth")
+        - insert into Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+        values ("The Shire", "Bilbo Baggins", "1 Hobbit-Hole", "Bag End", "111","Middle Earth")
 
 ## Update Bilbo Baggins record so that the postal code changes to "11122"
 
-    - update Customers
+        - update Customers
         set PostalCode = 11122
         where CustomerID = 92
 
 ## (Stretch) Find a query to discover how many different cities are stored in the Customers table. Repeats should not be double counted
 
-    - SELECT City, COUNT(city) Counts
-    FROM Customers
-    GROUP BY City
-    HAVING COUNT(city) <2;
+        SELECT Distinct City
+        FROM Customers
+        GROUP BY City
 
 ## (Stretch) Find all suppliers who have names longer than 20 characters. You can use `length(SupplierName)` to get the length of the name
 
