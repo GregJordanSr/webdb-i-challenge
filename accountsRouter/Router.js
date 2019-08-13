@@ -8,7 +8,22 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-    db("accounts")
+    // Destructing the req.query and declaring the keys used in the db
+    const { limit, sortby, sortdir } = req.query;
+    const queries = db('name', 'budget').from('accounts');
+    if (limit) {
+        queries.limit(limit);
+    }
+
+    if (sortby) {
+        queries.sortby(sortby);
+    }
+
+    if (sortdir) {
+        queries.sortdir(sortdir);
+    }
+    // db("accounts")
+    queries
         .then((accounts) => {
             res.status(200).json(accounts);
         }).catch((err) => {
